@@ -7,14 +7,15 @@ RUN     apk update \
 			openssl
 
 RUN		mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.orig ; \
-		mkdir /etc/ssl/nginx ; \
-		mkdir /var/run/nginx
+		mkdir -p /etc/ssl/nginx ; \
+		mkdir -p /var/run/nginx
 
-RUN		openssl dhparam -out /etc/ssl/nginx/dh4096.pem 4096
+RUN		openssl dhparam -out /etc/ssl/nginx/dh2048.pem 2048
+RUN		openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ft_service.key -out /etc/nginx/ft_service.crt -subj "/C=FR/ST=IDE/L=Paris/O=42/OU=42/CN=ft_service.com"
 
 COPY	srcs/nginx.conf /etc/nginx/
+COPY	srcs/index.html	/www/
 
 EXPOSE  80 443
 
-# CMD		nginx -g 'pid /tmp/nginx.pid;' \
-# 		&& nginx -g 'daemon off;'
+CMD		nginx -g 'daemon off;'
