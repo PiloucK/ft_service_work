@@ -1,7 +1,7 @@
 minikube start --vm-driver=docker
 
 # Get the cluster's IP address and store it in a variable
-CORRECT_CLUSTER_IP=$(kubectl get node -o wide | grep -oP  '[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}')
+CORRECT_CLUSTER_IP=$(kubectl get node -o wide | grep -oP  '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}')
 
 # Replace the variable name in all files of the project by its value
 sed -i -s "s/CORRECT_CLUSTER_IP/${CORRECT_CLUSTER_IP}/g" srcs/*/*
