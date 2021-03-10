@@ -33,7 +33,7 @@ metadata:
   labels:
     app: mysql
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: mysql
@@ -42,15 +42,16 @@ spec:
       labels:
         app: mysql
     spec:
+      restartPolicy: Always
       containers:
       - name: mysql
-        image: mysql
+        image: mysql:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 3306
           name: mysql
-        volumeMunts:
-        - mountPath: /var/lib/mysql
+        volumeMounts:
+        - mountPath: "/var/lib/mysql"
           name: mysql-pvc
           subPath: mysql
       volumes:
