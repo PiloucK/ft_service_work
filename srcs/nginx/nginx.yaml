@@ -14,11 +14,12 @@ spec:
     protocol: TCP
     port: 443
     targetPort: 443
+
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: nginx
   labels:
     app: nginx
 spec:
@@ -36,4 +37,5 @@ spec:
           image: nginx:latest
           imagePullPolicy: Never
           ports:
-            - containerPort: 8080
+            - containerPort: 80
+            - containerPort: 443

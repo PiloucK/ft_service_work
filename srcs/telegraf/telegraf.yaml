@@ -10,7 +10,7 @@ stringData:
   INFLUXDB_USER: clkuznie
   INFLUXDB_USER_PASSWORD: toto
 
-#--------------------------
+---
 
 apiVersion: v1
 
@@ -38,7 +38,7 @@ data:
       parse_data_dog_tags = true 
       read_buffer_size = 65535
 
-#--------------------------
+---
 
 apiVersion: apps/v1
 kind: Deployment
