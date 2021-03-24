@@ -3,8 +3,9 @@ kind: Service
 metadata:
   name: nginx-service
   annotations:
-    metallb.universe.tf/allow-shared-ip: shared
+    metallb.universe.tf/allow-shared-ip: "true"
 spec:
+  type: LoadBalancer
   selector:
     app: nginx
   ports:

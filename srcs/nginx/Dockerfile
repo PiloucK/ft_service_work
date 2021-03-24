@@ -3,8 +3,7 @@ FROM	alpine:latest
 RUN     apk update \
 		&& apk upgrade \
 		&& apk --no-cache add \
-			nginx \
-			openssl
+			nginx
 
 RUN		rm /etc/nginx/nginx.conf ; \
 		mkdir -p /etc/ssl/nginx ; \
@@ -14,9 +13,9 @@ RUN		rm /etc/nginx/nginx.conf ; \
 		chown -R www:www /var/lib/nginx ; \
 		chown -R www:www /www
 
-RUN		openssl dhparam -out /etc/ssl/nginx/dh2048.pem 2048
-RUN		openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ft_service.key -out /etc/nginx/ft_service.crt -subj "/C=FR/ST=IDE/L=Paris/O=42/OU=42/CN=ft_service.com"
-
+COPY	cert/dh2048.pem /etc/ssl/nginx/dh2048.pem
+COPY	cert/ft_service.key /etc/nginx/ft_service.key
+COPY	cert/ft_service.crt /etc/nginx/ft_service.crt
 COPY	nginx.conf /etc/nginx/
 COPY	index.html	/www/
 
