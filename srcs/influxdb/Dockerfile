@@ -2,11 +2,11 @@ FROM    alpine:latest
 
 RUN     apk update \
 		&& apk upgrade --available \
-        && apk add \
+        && apk add --no-cache \
             influxdb
 
 VOLUME  [ "/var/lib/influxdb" ]
 
 EXPOSE  8086
 
-CMD     influxd
+CMD     influxd -config etc/influxdb.conf

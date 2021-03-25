@@ -1,4 +1,31 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influxdb-pvc
+  labels:
+    app: influxdb
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: influxdb-service
+  labels:
+    app: influxdb
+spec:
+  ports:
+    - port: 8086
+  selector:
+    app: influxdb
+  clusterIP: None
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,7 +33,7 @@ metadata:
   labels:
     app: influxdb
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: influxdb
@@ -17,7 +44,7 @@ spec:
     spec:
       containers:
         - name: influxdb
-          image: influxdb_rbakker
+          image: influxdb
           imagePullPolicy: Never
           env:
             - name: INFLUXDB_DATABASE
