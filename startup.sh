@@ -63,9 +63,9 @@ kubectl apply -f srcs/influxdb/influxdb.yaml
 # Mysql
 # echo "Mysql loading\n"
 # touch mysql_trace
-docker build -t mysql srcs/mysql/
+# docker build -t mysql srcs/mysql/
 #  >> mysql_trace
-kubectl apply -f srcs/mysql/mysql.yaml
+# kubectl apply -f srcs/mysql/mysql.yaml
 #  >> mysql_trace
 # rm mysql_trace
 
