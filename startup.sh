@@ -55,6 +55,11 @@ kubectl apply -f srcs/metallb/metallb-config-map.yaml
 # rm metallb_trace
 
 
+# Influxdb
+docker build -t influxdb srcs/influxdb/
+kubectl apply -f srcs/influxdb/influxdb.yaml
+
+
 # Mysql
 # echo "Mysql loading\n"
 # touch mysql_trace
