@@ -12,3 +12,5 @@ CREATE DATABASE IF NOT EXISTS wordpress;
 GRANT ALL PRIVILEGES ON wordpress.* TO 'ftservice'@'%';
 FLUSH PRIVILEGES;
 EOF
+
+wait

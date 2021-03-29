@@ -9,7 +9,7 @@ COPY    startup.sh .
 
 EXPOSE  8086
 
-# CMD     sh startup.sh
+CMD     sh startup.sh
 
 # FROM    alpine:latest
 

@@ -19,4 +19,4 @@ RUN		mkdir -p /run/mysqld ; \
 
 EXPOSE	3306
 
-# CMD     sh /startup.sh
+CMD     sh /startup.sh
