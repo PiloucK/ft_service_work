@@ -4,8 +4,7 @@ RUN	apk update \
 	&& apk upgrade \
 	&& apk --no-cache add \
 		mariadb \
-		mariadb-client ; \
-	rm /etc/my.cnf.d/mariadb-server.cnf
+		mariadb-client
 
 COPY		mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
 COPY		startup.sh startup.sh

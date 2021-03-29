@@ -56,8 +56,8 @@ kubectl apply -f srcs/metallb/metallb-config-map.yaml
 
 
 # Influxdb
-docker build -t influxdb srcs/influxdb/
-kubectl apply -f srcs/influxdb/influxdb.yaml
+# docker build -t influxdb srcs/influxdb/
+# kubectl apply -f srcs/influxdb/influxdb.yaml
 
 
 # Mysql
@@ -81,8 +81,8 @@ kubectl apply -f srcs/nginx/nginx.yaml
 
 
 # Wordpress
-# docker build -t wordpress srcs/wordpress
-# kubectl apply -f srcs/wordpress/wordpress.yaml
+docker build -t wordpress srcs/wordpress
+kubectl apply -f srcs/wordpress/wordpress.yaml
 
 
 echo ${CORRECT_CLUSTER_IP}
