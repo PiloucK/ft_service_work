@@ -8,11 +8,7 @@
 # this is only for the mysqld standalone daemon
 [mysqld]
 #skip-networking
-user=mysql
-datadir=/var/lib/mysql
-basedir=/usr
 
-# Galera-related settings
 [galera]
 # Mandatory settings
 #wsrep_on=ON
@@ -24,7 +20,7 @@ basedir=/usr
 #
 # Allow server to accept connections on all interfaces.
 #
-bind-address=192.168.49.2
+bind-address=0.0.0.0
 #
 # Optional setting
 #wsrep_slave_threads=1

@@ -8,6 +8,9 @@ RUN         apk update \
 			nginx \
 			php \
 			php-cli \
+			php-json \
+			php-opcache \
+			php-session \
 			php-curl \
 			php-phar \
 			php-fpm \
@@ -41,9 +44,8 @@ RUN			mkdir -p /etc/ssl/nginx ; \
 			chmod +x /usr/local/bin/wp ; \
 			chmod +x startup.sh
 
-COPY        nginx.conf /etc/nginx/
+COPY        __/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE      5050
 
-CMD			nginx -g 'daemon off;'
-# CMD			sh startup.sh
+CMD			sh startup.sh

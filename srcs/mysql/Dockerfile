@@ -1,19 +1,20 @@
 FROM	alpine:3.13.3
 
-RUN	apk update \
-	&& apk upgrade \
-	&& apk --no-cache add \
-		mariadb \
-		mariadb-client
+RUN		apk update \
+		&& apk upgrade \
+		&& apk --no-cache add \
+			mariadb \
+			mariadb-client \
+			mariadb-server-utils
 
-COPY		mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
-COPY		startup.sh startup.sh
+COPY	__/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf
+COPY	startup.sh startup.sh
 
 RUN		mkdir -p /run/mysqld ; \
-            mkdir -p /var/lib/mysql ; \
+		mkdir -p /var/lib/mysql ; \
 		chown -R mysql:mysql /var/lib/mysql ; \
 		chown -R mysql:mysql /run/mysqld ; \
-            chmod -R 755 /var/lib/mysql ; \
+		chmod -R 755 /var/lib/mysql ; \
 		chmod +x /startup.sh
 
 EXPOSE	3306
