@@ -7,10 +7,10 @@ minikube start --vm-driver=docker
 eval $(minikube docker-env)
 
 # Get the cluster's IP address and store it in a variable
-CORRECT_CLUSTER_IP=$(kubectl get node -o wide | grep -oP  '[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}\.[[:digit:]]{1,3}') > /dev/null
+CORRECT_CLUSTER_IP=$(minikube ip)
 
 # Replace the variable name in all files of the project by its value
-sed -i -E "s/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/${CORRECT_CLUSTER_IP}/g" srcs/*/* > /dev/null
+sed -i -E "s/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/${CORRECT_CLUSTER_IP}/g" srcs/*/*
 
 
 # Create same certificates for all nginx using services

@@ -28,8 +28,11 @@ $i++;
 $cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
 $cfg['Servers'][$i]['host'] = 'mysql-service';
+$cfg['Servers'][$i]['port'] = '3306';
+$cfg['Servers'][$i]['user'] = 'ftservice';
+$cfg['Servers'][$i]['password'] = 'ftservice';
 $cfg['Servers'][$i]['compress'] = false;
-$cfg['Servers'][$i]['AllowNoPassword'] = false;
+$cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 /**
  * phpMyAdmin configuration storage settings.

@@ -1,4 +1,4 @@
-FROM    alpine:latest
+FROM    alpine:3.13.3
 
 RUN     apk update \
 		&& apk upgrade \
@@ -25,7 +25,7 @@ RUN			wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-english.tar.gz
 			rm phpMyAdmin-latest-english.tar.gz ; \
             mv /var/www/php* /var/www/phpmyadmin
 
-COPY		config.inc.php /var/www/phpmyadmin/
+COPY		config.inc.php /var/www/phpmyadmin/config.inc.php
 
 RUN			mkdir -p /etc/ssl/nginx ; \
 			mkdir -p /var/run/nginx ; \
