@@ -1,12 +1,12 @@
 #!/bin/sh
 
-influxd -config etc/influxdb.conf &
-
+influxd &
+# -config etc/influxdb.conf 
 sleep 2
 
 influx << EOF
-CREATE USER influxdb WITH PASSWORD '' WITH ALL PRIVILEGES ;
-CREATE DATABASE ftservice ;
+CREATE DATABASE telegraf ;
+CREATE USER telegraf WITH PASSWORD 'telegraf' ;
 EOF
 
-sleep infinity
+# sleep infinity

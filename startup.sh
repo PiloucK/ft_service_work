@@ -85,6 +85,11 @@ docker build -t wordpress srcs/wordpress
 kubectl apply -f srcs/wordpress/wordpress.yaml
 
 
+# Phpmyadmin
+docker build -t phpmyadmin srcs/phpmyadmin
+kubectl apply -f srcs/phpmyadmin/phpmyadmin.yaml
+
+
 echo ${CORRECT_CLUSTER_IP}
 # kubectl create namespace monitoring
 
