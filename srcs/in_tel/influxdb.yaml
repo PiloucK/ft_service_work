@@ -32,7 +32,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: influxdb
-        image: influxdb:latest
+        image: in_tel:latest
         imagePullPolicy: Never
         ports:
           - containerPort: 8086

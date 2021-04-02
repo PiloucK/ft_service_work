@@ -56,8 +56,8 @@ kubectl apply -f srcs/metallb/metallb-config-map.yaml
 
 
 # Influxdb
-# docker build -t influxdb srcs/influxdb/
-# kubectl apply -f srcs/influxdb/influxdb.yaml
+docker build -t in_tel srcs/in_tel/
+kubectl apply -f srcs/in_tel/influxdb.yaml
 
 
 # Mysql

@@ -1,3 +1,5 @@
 #!/bin/bash
 
-sh /usr/share/grafana/grafana-server
+cd /usr/share/grafana
+
+grafana-server
