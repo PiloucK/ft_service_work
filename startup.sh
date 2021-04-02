@@ -18,6 +18,8 @@ openssl dhparam -out srcs/tmp_cert/dh2048.pem 2048
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout srcs/tmp_cert/ft_service.key -out srcs/tmp_cert/ft_service.crt -subj "/C=FR/ST=IDE/L=Paris/O=42/OU=42/CN=ft_service.com"
 cp srcs/tmp_cert/* srcs/nginx/cert
 cp srcs/tmp_cert/* srcs/wordpress/cert
+cp srcs/tmp_cert/* srcs/phpmyadmin/cert
+cp srcs/tmp_cert/* srcs/ftps/cert
 rm -f srcs/tmp_cert/*
 
 
