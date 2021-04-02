@@ -1,3 +1,3 @@
 #!/bin/bash
 
-vsftpd
+vsftpd /etc/vsftpd/vsftpd.conf
