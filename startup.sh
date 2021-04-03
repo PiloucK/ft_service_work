@@ -62,6 +62,9 @@ docker build -t in_tel srcs/in_tel/
 kubectl apply -f srcs/in_tel/influxdb.yaml
 
 
+# Ftps
+
+
 # Mysql
 # echo "Mysql loading\n"
 # touch mysql_trace
