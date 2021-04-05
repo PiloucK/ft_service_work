@@ -10,7 +10,7 @@ RUN     apk update \
             wget
 
 COPY    startup.sh .
-COPY    telegraf.conf telegraf.conf.custom
+COPY    toto.conf telegraf.conf
 
 RUN     mkdir -p /etc/influxdb ; \
         mkdir -p /var/lib/influxdb ; \
@@ -21,10 +21,6 @@ RUN     mkdir -p /etc/influxdb ; \
 		chown -R telegraf:telegraf /etc/telegraf ; \
 		chown -R telegraf:telegraf /var/lib/telegraf ; \
 		chmod +x /startup.sh
-
-# RUN     wget https://dl.influxdata.com/telegraf/releases/telegraf-1.18.0_linux_amd64.tar.gz && \
-#         tar xf telegraf-1.18.0_linux_amd64.tar.gz ; \
-#         rm telegraf-1.18.0_linux_amd64.tar.gz
 
 EXPOSE  8086
 
