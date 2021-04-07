@@ -43,7 +43,6 @@ spec:
       - name: telegraf-endpoint
         hostPath:
           path: /var/run/docker.sock
-
 ---
 
 apiVersion: v1
