@@ -10,7 +10,7 @@ eval $(minikube docker-env)
 CORRECT_CLUSTER_IP=$(minikube ip)
 
 # Replace the variable name in all files of the project by its value
-sed -i -E "s/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/${CORRECT_CLUSTER_IP}/g" srcs/*/*
+sed -i -E "s/[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/${CORRECT_CLUSTER_IP}/g" srcs/*/*.*
 
 
 # Create same certificates for all nginx using services
@@ -25,10 +25,10 @@ rm -f srcs/tmp_cert/*
 
 # echo "Addons loading\n"
 # touch addons_trace
-# minikube addons enable metrics-server >> addons_trace
-# minikube addons enable logviewer >> addons_trace
-# minikube addons enable dashboard >> addons_trace
-# minikube addons enable metrics-server >> addons_trace
+minikube addons enable metrics-server
+minikube addons enable logviewer
+minikube addons enable dashboard
+minikube addons enable metrics-server
 # rm addons_trace
 
 
@@ -58,11 +58,18 @@ kubectl apply -f srcs/metallb/metallb-config-map.yaml
 
 
 # Influxdb
-docker build -t in_tel srcs/in_tel/
-kubectl apply -f srcs/in_tel/influxdb.yaml
+# docker build -t influxdb srcs/influxdb/
+# kubectl apply -f srcs/influxdb/influxdb.yaml
+
+
+# # Telegraf
+# docker build -t telegraf srcs/telegraf/
+# kubectl apply -f srcs/telegraf/telegraf.yaml
 
 
 # Ftps
+docker build -t ftps srcs/ftps/
+kubectl apply -f srcs/ftps/ftps.yaml
 
 
 # Mysql

@@ -32,7 +32,7 @@ spec:
       serviceAccountName: telegraf
       containers:
       - name: telegraf
-        image: in_tel:latest
+        image: telegraf:latest
         imagePullPolicy: Never
         ports:
         - containerPort: 8094
