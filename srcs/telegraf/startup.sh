@@ -1,3 +1,3 @@
 #!/bin/sh
 
-telegraf
+telegraf --config /etc/telegraf/telegraf.conf

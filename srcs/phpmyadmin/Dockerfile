@@ -17,6 +17,8 @@ RUN     apk update \
             php7-zip \
             wget
 
+ENV         PMA_ABSOLUTE_URI=https://phpmyadmin-service/phpmyadmin
+
 COPY		cert/dh2048.pem /etc/ssl/nginx/dh2048.pem
 COPY		cert/ft_service.key /etc/nginx/ft_service.key
 COPY  		cert/ft_service.crt /etc/nginx/ft_service.crt

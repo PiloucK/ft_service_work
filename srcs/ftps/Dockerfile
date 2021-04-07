@@ -20,4 +20,4 @@ RUN     mkdir -p /ftservice/vsftpd/pub/upload ; \
 
 EXPOSE  21 20 40000-40004
 
-# CMD     sh startup.sh
+CMD     sh startup.sh

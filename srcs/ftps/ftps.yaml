@@ -1,56 +1,63 @@
 apiVersion: v1
-    kind: Service
-    metadata:
-      name: ftps-service
-      annotations:
-        metallb.universe.tf/allow-shared-ip: "true"
-      labels:
-        run: ftps
-    spec:
-      type: LoadBalancer
-      ports:
-      - port: 21
-        protocol: TCP
-      - port: 20
-        protocol: TCP
-      - port: 40000
-        protocol: TCP
-      - port: 40001
-        protocol: TCP
-      - port: 40002
-        protocol: TCP
-      - port: 40003
-        protocol: TCP
-      - port: 40004
-        protocol: TCP
-      selector:
-        app: ftps
-    ---
+kind: Service
+metadata:
+  name: ftps-service
+  annotations:
+    metallb.universe.tf/allow-shared-ip: "true"
+  labels:
+    run: ftps
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 21
+    protocol: TCP
+    name: ftps-21
+  - port: 20
+    protocol: TCP
+    name: ftps-20
+  - port: 40000
+    protocol: TCP
+    name: ftps-40000
+  - port: 40001
+    protocol: TCP
+    name: ftps-40001
+  - port: 40002
+    protocol: TCP
+    name: ftps-40002
+  - port: 40003
+    protocol: TCP
+    name: ftps-40003
+  - port: 40004
+    protocol: TCP
+    name: ftps-40004
+  selector:
+    app: ftps
+---
 
-    apiVersion: apps/v1
-    kind: Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftps
+spec:
+  selector:
+    matchLabels:
+      app: ftps
+  replicas: 1
+  template:
     metadata:
-      name: ftps
+      labels:
+        app: ftps
     spec:
-      selector:
-        matchLabels:
-          app: ftps
-      replicas: 1
-      template:
-        metadata:
-          labels:
-            app: ftps
-        spec:
-          restartPolicy: Always
-          containers:
-          - name: ftps
-            image: ftps:latest
-            imagePullPolicy: Never
-            ports:
-            - containerPort: 21
-            - containerPort: 20
-            - containerPort: 40000
-            - containerPort: 40001
-            - containerPort: 40002
-            - containerPort: 40003
-            - containerPort: 40004
+      restartPolicy: Always
+      containers:
+      - name: ftps
+        image: ftps:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 21
+        - containerPort: 20
+        - containerPort: 40000
+        - containerPort: 40001
+        - containerPort: 40002
+        - containerPort: 40003
+        - containerPort: 40004

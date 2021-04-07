@@ -8,6 +8,7 @@ RUN     apk update \
             grafana
 
 COPY    startup.sh .
+COPY    __/grafana.db /usr/share/grafana/data/grafana.db
 
 EXPOSE  3000
 
