@@ -58,13 +58,18 @@ kubectl apply -f srcs/metallb/metallb-config-map.yaml
 
 
 # Influxdb
-# docker build -t influxdb srcs/influxdb/
-# kubectl apply -f srcs/influxdb/influxdb.yaml
+docker build -t influxdb srcs/influxdb/
+kubectl apply -f srcs/influxdb/influxdb.yaml
 
 
-# # Telegraf
-# docker build -t telegraf srcs/telegraf/
-# kubectl apply -f srcs/telegraf/telegraf.yaml
+# Telegraf
+docker build -t telegraf srcs/telegraf/
+kubectl apply -f srcs/telegraf/telegraf.yaml
+
+
+# Grafana
+docker build -t grafana srcs/grafana/
+kubectl apply -f srcs/grafana/grafana.yaml
 
 
 # Ftps
