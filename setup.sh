@@ -1,3 +1,5 @@
+#!/bin/sh
+
 echo "Starting the cluster"
 # touch minikube_trace
 minikube start --vm-driver=docker

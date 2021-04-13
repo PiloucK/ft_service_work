@@ -11,9 +11,9 @@ while true; do
         --admin_email="admin@admin.com" && break;
 done;
 
-wp user create random_user random@user.com --user_pass=toto --display_name=Batman
-wp user create random_author random@user.com --role=author --user_pass=toto --display_name=Superman
-wp user create random_author random@user.com --role=contributor --user_pass=toto --display_name=Wonderwoman
+wp --allow-root --path='/var/www/wordpress' user create Batman random@user1.com --user_pass=toto --display_name=Batman
+wp --allow-root --path='/var/www/wordpress' user create Superman random@user2.com --role=author --user_pass=toto --display_name=Superman
+wp --allow-root --path='/var/www/wordpress' user create WonderWoman random@user3.com --role=contributor --user_pass=toto --display_name=Wonderwoman
 
 php-fpm7
 
